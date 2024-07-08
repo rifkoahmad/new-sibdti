@@ -29,8 +29,7 @@
                                     <th>No</th>
                                     <th>Judul</th>
                                     <th>Kategori Berita</th>
-                                    <th>Views</th>
-                                    <th>Status</th>
+                                    <th>Deskripsi</th>
                                     <th>Publish</th>
                                     <th>Function</th>
                                 </tr>
@@ -42,7 +41,6 @@
                                         <td>{{ $item->judul }}</td>
                                         <td>{{ $item->kategori_beritas->nama }}</td>
                                         <td>{{ $item->catatan }}</td>
-                                        <td>{{ $item->gambar }}</td>
                                         <td>{{ $item->tanggal_publikasi }}</td>
                                         <td>
                                             <div class="d-flex justify-content-center">
@@ -52,7 +50,7 @@
                                                 <a class="btn btn-primary btn-sm me-2" href="{{ route('berita.edit', $item->id) }}">
                                                     <i class="bi bi-pencil-square"></i> Edit
                                                 </a>
-                                                <form action="{{ route('berita.destroy', $item->id) }}" method="POST" class="d-inline">
+                                                <form action="{{ route('berita.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus berita ini?');">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-danger btn-sm">
